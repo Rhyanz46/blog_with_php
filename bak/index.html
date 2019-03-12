@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .column {
+            float: left;
+            padding: 10px;
+            height: 300px;
+        }
+
+        .left,
+        .right {
+            width: 20%;
+        }
+
+        .middle {
+            width: 60%;
+            color: white;
+            text-align: center;
+        }
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+
+</head>
+
+<body style="background-color: black;">
+    <h1 style="color: white; text-align: center; bottom: 0px">Selamat Datang</h1>
+    <div style="color: white; text-align: center; top: -10px">Di Aplikasi Pengenal Jenis-Jenis Narkoba</div>
+    <img src="admin/img/default/awal.jpeg" style="padding-top: 6em;margin-left: auto; margin-right: auto; display: block" alt="">
+    <div style="color: white; text-align: center; top: -10px; position: fixed; top: 70%; left: 3em;">
+
+    </div>
+    <div class="row" style="padding-top: 9em;">
+        <div class="column left">
+            <img src="admin/img/default/kiri.jpeg" alt="" onClick="closeprogram()">
+        </div>
+        <div class="column middle">
+            Badan Narkotika Nasional Kota Pagar Alam
+        </div>
+        <div class="column right">
+            <img src="admin/img/default/kanan.jpeg" align="right" alt="" onclick="keprogram()">
+        </div>
+    </div>
+
+</body>
+<script>
+    function keprogram(){
+        document.location.href = "home.php";
+    }
+
+    function closeprogram(){
+    	document.location.href = "/exit";
+    }
+</script>
+</html>

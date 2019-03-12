@@ -1,0 +1,132 @@
+/*background-image: url("paper.gif");*/
+
+.tomboledit{
+	width: 10em !important;
+}
+
+
+.gambar{
+    width: 100% !important;
+    max-width: 300px !important;
+    height: auto !important;
+}
+
+#page-navi {
+  width:50%;
+  margin:40px auto;
+  margin-bottom:10px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+#page-navi li {
+  list-style: none;
+  display: inline;
+}
+ 
+#page-navi li a {
+  float: left;
+  display: none;
+  padding: 8px 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  text-decoration: none;
+  -webkit-transition: background 200ms linear;
+  transition: background 200ms linear;
+  border-radius: 3px;
+  color:#000;
+}
+
+#page-navi li:last-child a {
+  margin-right: 0px;
+}
+
+#page-navi li a.current,
+#page-navi li a.disable,
+#page-navi li a:hover {
+  background: tomato;
+  color: #fff;
+  border-bottom:3px solid #fff;
+}
+
+.next, .previos{
+	display: block !important;
+}
+
+
+.w3-modal {
+    z-index: 3;
+    display: none;
+    padding-top: 5%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0);
+    background-color: rgba(4, 0, 0, 0.56);
+}
+
+.close{
+  color: white;
+  font-size: 10px;
+  background-color: #17a2b8;
+  padding: 10px;
+  top :10px;
+  right: 10px;
+}
+
+.putih{
+  color: white;
+}
+
+.kiri{
+  left: 0;
+}
+
+.tombol-mulai{
+  margin-top: 8px;
+  border-color: #b36e6e5e;
+  background-color: #bc06bde0;
+  width: 40%;
+  color: white;
+}
+
+input[type=text], input[type=time], input[type=url], textarea.md-textarea {
+    border-bottom: 1px solid #6a1bd2;
+    border-radius: 0;
+    outline: 0;
+    height: 2.1rem;
+    width: 50%;
+    font-size: 1rem;
+    background-color: #2f151547;
+    padding-left: 9px;
+}
+
+.w3-center{text-align:center!important}
+
+
+.animasinya{
+  transition: all .3s ease-out;
+}
+
+input[type="radio"]{
+  visibility: hidden;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked + label{
+  background-color: #58ba83;
+  padding: 0.4rem;
+  border-radius: 4px;
+  color: white;
+  position: fixed;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#gambar_detail{
+  width: 100%;
+  max-width: 200px;
+}

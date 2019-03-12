@@ -1,0 +1,50 @@
+* a {
+	color: black;
+}
+
+* a:hover{
+	color: black;
+	text-decoration: none;
+}
+
+.otak{
+	background-color: #009688;
+	height: 100%;
+    max-height: 90px;
+    display: none;
+	
+}
+
+.sepatu{
+	height: 100%;
+	max-height: 70px;
+	background-color: #009688;
+	padding: 2%;
+	color: white;
+	display: none;
+}
+
+.text-putih{
+	color: white;
+}
+
+.samping{
+	padding-top: 20px ;
+	background-color: #f1f1f1;
+	height: 77%;
+	display: none;
+}
+
+.tombol{
+	/*padding: 6em;*/
+	padding:8%;
+	background-color: #e1e1e1;
+	text-decoration: none;
+	font-size: 30px;
+}
+
+.tinggi{
+	height: 40%;
+	padding: 3px;
+	padding-top: 10%;
+}

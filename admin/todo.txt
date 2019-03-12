@@ -1,0 +1,15 @@
+fungsional
+	tracking time
+		bisa pake object time()
+		bisa pake tracker.js
+
+	kirim nama,lama,jumlah benar ke DB
+
+	permainan baru
+
+	pecegahan pake yang biasa aja
+
+persiskan design
+	logo
+	ukuran button di sesuaikan
+	
