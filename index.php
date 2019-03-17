@@ -49,6 +49,22 @@ $data_slidder = mysqli_query($koneksidb, $sql_slidder)or die(mysql_error);
     <link rel="stylesheet" href="assets/css/jquery.datetimepicker.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
+        .kategori-post{
+            background: #f9f9ff;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 33% 33% 33%;
+            grid-column-gap: 1%;
+        }
+        .kategori-post > div{
+            text-align: center;
+            border-bottom: 1px dashed #eeeeee;
+            cursor: pointer;
+        }
+        .kategori-post > div:hover {
+            color: #7f7b78;
+            font-weight: bold;
+        }
         .anta{
 
         }
@@ -294,6 +310,7 @@ $data_slidder = mysqli_query($koneksidb, $sql_slidder)or die(mysql_error);
                             </li>
                             <li><a href="contact-us.html">contact</a></li>
                             <li><a href="elements.html">Elements</a></li>
+                            <li><a href="gallery.php">Gallery</a></li>
                         </ul>
                     </div>
                 </div>
@@ -341,9 +358,17 @@ $data_slidder = mysqli_query($koneksidb, $sql_slidder)or die(mysql_error);
                         
                         
                         <div class="col-lg-12">
-                            <div class="quotes">
-                                MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training.										
-                            </div>
+                                <?php 
+                                if($singkatan_perusahaan != ""){
+                                    echo '<div class="quotes">';
+                                    echo $singkatan_perusahaan;
+                                    echo '</div>';
+                                }else{
+                                    echo '<div style="margin: 30px">
+                                    <hr>
+                                    </div>'  ;
+                                }
+                                ?>
                              <div class="row">
                                 <?php 
                                 
@@ -372,7 +397,7 @@ $data_slidder = mysqli_query($koneksidb, $sql_slidder)or die(mysql_error);
                                             <div class="food-content">
                                                 <div class="d-flex justify-content-between">
                                                     <h5><a href="blog-details.php?id='. $id .'">'.$judul . '</a></h5>
-                                                    <span class="style-change">'.$kategori.'</span>
+                                                    <span class="style-change" style="font-size: 10px;">'.$kategori.'</span>
                                                 </div>
                                                 <p class="pt-3">' . ambil_kata($post, 30)  . '</p>
                                             </div>
@@ -380,6 +405,22 @@ $data_slidder = mysqli_query($koneksidb, $sql_slidder)or die(mysql_error);
                                     </div>';
                                 }
                                 ?>
+                                <div class="br"></div>
+                                <div class="col-sm-12">
+                                    <div class="single-food" style="background: white">
+                                        <h4 class="widget_title" style="margin-top: 20px;margin-top: 20px;padding: 11px;background: #ffb606; text-align: center;">Post Catgories</h4>
+                                        <div class="kategori-post">
+                                            <?php 
+                                                foreach($kategori_list as $kategori){
+                                                    $sql = "SELECT * FROM post_list where kategori='$kategori'";
+                                                    $jumlah = mysqli_query($koneksidb, $sql);
+                                                    $jumlah = mysqli_num_rows($jumlah);
+                                                    echo '<div>'.$kategori.'</div>';
+                                                }
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -403,10 +444,10 @@ $data_slidder = mysqli_query($koneksidb, $sql_slidder)or die(mysql_error);
                             <h5><?php echo $nama_admin ?></h5>
                             <p><?php echo $job_admin ?></p>
                             <div class="social_icon">
-                                <a href="<?php echo $fb_link ?>"><i class="fa fa-facebook"></i></a>
-                                <a href="<?php echo $twitter_link ?>"><i class="fa fa-twitter"></i></a>
-                                <a href="<?php echo $pinterest_link ?>"><i class="fa fa-pinterest"></i></a>
-                                <a href="<?php echo $instagram_link ?>"><i class="fa fa-instagram"></i></a>
+                                <a href="https://<?php echo $fb_link ?>"><i class="fa fa-facebook"></i></a>
+                                <a href="https://<?php echo $twitter_link ?>"><i class="fa fa-twitter"></i></a>
+                                <a href="https://<?php echo $pinterest_link ?>"><i class="fa fa-pinterest"></i></a>
+                                <a href="https://<?php echo $instagram_link ?>"><i class="fa fa-instagram"></i></a>
                             </div>
                             <p><?php echo $deskripsi_admin ?></p>
                             <div class="br"></div>
@@ -433,39 +474,6 @@ $data_slidder = mysqli_query($koneksidb, $sql_slidder)or die(mysql_error);
                             ?>
                             <div class="br"></div>
                         </aside>
-                        
-                        
-                        <aside class="single_sidebar_widget post_category_widget">
-                            <h4 class="widget_title">Post Catgories</h4>
-                            <ul class="list cat-list">
-                                <?php 
-                                foreach($kategori_list as $kategori){
-                                    $sql = "SELECT * FROM post_list where kategori='$kategori'";
-                                    $jumlah = mysqli_query($koneksidb, $sql);
-                                    $jumlah = mysqli_num_rows($jumlah);
-                                    echo '<li>
-                                            <a href="#" class="d-flex justify-content-between">
-                                                <p>'.$kategori.'</p>
-                                                <p>'.$jumlah.'</p>
-                                            </a>
-                                        </li>';
-                                }
-                                ?>
-                            </ul>
-                            <div class="br"></div>
-                        </aside>
-                        
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="section-top">
-                        <h3><span class="style-change">Our Blog</span> <br><?php echo $nama_perusahaan ?></h3>
-                        <p class="pt-3"><?php echo $singkatan_perusahaan ?></p>
                     </div>
                 </div>
             </div>
@@ -481,8 +489,7 @@ $data_slidder = mysqli_query($koneksidb, $sql_slidder)or die(mysql_error);
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-top2 text-center">
-                        <h3>Our <span>Team</span></h3>
-                        <p><i>Beast kind form divide night above let moveth bearing darkness.</i></p>
+                        <h3>Team <span>Kami</span></h3>
                     </div>
                 </div>
             </div>
@@ -533,43 +540,17 @@ $data_slidder = mysqli_query($koneksidb, $sql_slidder)or die(mysql_error);
             <div class="col-sm-12">
                 <div class="instansi">
                     <ul class="cards">
+                    <?php foreach($instansi_data as $instansi): ?>
                     <li class="cards__item">
                         <div class="card">
-                        <div class="card__image card__image--fence"></div>
+                        <div class="card__image" style="background: url('admin/static/instansi/<?php echo $instansi['link'] ?>')"></div>
                         <div class="card__content">
                             <div class="card__title">Flex</div>
-                            
                             <button class="btn btn--block card__btn">Button</button>
                         </div>
                         </div>
                     </li>
-                    <li class="cards__item">
-                        <div class="card">
-                        <div class="card__image card__image--river"></div>
-                        <div class="card__content">
-                            <div class="card__title">Flex Grow</div>
-                            <button class="btn btn--block card__btn">Button</button>
-                        </div>
-                        </div>
-                    </li>
-                    <li class="cards__item">
-                        <div class="card">
-                        <div class="card__image card__image--record"></div>
-                        <div class="card__content">
-                            <div class="card__title">Flex Shrink</div>
-                            <button class="btn btn--block card__btn">Button</button>
-                        </div>
-                        </div>
-                    </li>
-                    <li class="cards__item">
-                        <div class="card">
-                        <div class="card__image card__image--flowers"></div>
-                        <div class="card__content">
-                            <div class="card__title">Flex Basis</div>
-                            <button class="btn btn--block card__btn">Button</button>
-                        </div>
-                        </div>
-                    </li>
+                    <?php endforeach ?>
                     </ul>
                 </div>    
             </div>

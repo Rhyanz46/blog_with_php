@@ -2,6 +2,8 @@
 include 'inc/set_database.php'; 
 session_start();
 
+$salah = '';
+
 if (isset($_SESSION["email"])) {
   header('Location: index.php');
 }

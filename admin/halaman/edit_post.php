@@ -19,6 +19,7 @@ $hasil_semua_data = mysqli_query($koneksidb, $semua_data)or die(mysql_error);
  <div class="box box-warning">
  <div class="box-header with-border">
 
+  <?php if(!empty($_GET['error'])): ?>
   <?php if ($_GET['error'] == 'gambar'): ?>
   <div class="alert alert-warning alert-dismissible">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -43,7 +44,7 @@ $hasil_semua_data = mysqli_query($koneksidb, $semua_data)or die(mysql_error);
     <h4><i class="icon fa fa-check"></i> Sukses!</h4>
     Gambar Berhasil Di Ubah
   </div>   
-  
+  <?php endif ?>
   <?php endif ?>
 
  <div class="row">

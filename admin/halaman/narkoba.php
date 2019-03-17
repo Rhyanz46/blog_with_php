@@ -18,7 +18,7 @@ $hasil_semua_data = mysqli_query($koneksidb, $semua_data)or die(mysql_error);
             <div class="box-body">
               <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                 <thead>
-                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Nama Lain</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Manfaat</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Akibat</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Kategori</th></tr>
+                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Nama Lain</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Manfaat</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Views</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Kategori</th></tr>
                 </thead>
                 <tbody>
                     <?php
@@ -28,7 +28,7 @@ $hasil_semua_data = mysqli_query($koneksidb, $semua_data)or die(mysql_error);
                             echo '<td>' . $data['nama_lain'] . '</td>';
                             echo '<td>' . strip_tags($data['deskripsi']) . '</td>';
                             echo '<td>' . $data['gejala'] . '</td>';
-                            echo '<td>' . $data['akibat'] . '</td>';
+                            echo '<td>' . $data['views'] . ' Kali </td>';
                             echo '<td>' . $data['kategori'] . '</td>';
                             echo '</tr>';
                             
@@ -95,23 +95,7 @@ $hasil_semua_data = mysqli_query($koneksidb, $semua_data)or die(mysql_error);
 
                 <div class="form-group">
                   <label>Kategori</label>
-                  <select class="form-control" name="kategori">
-                    <?php if ($jumlahNarkotika < 6): ?>
-                      <option value="narkotika">Narkotika</option>
-                    <?php else: ?>
-                      <option value="narkotika" disabled>Narkotika [Data Sudah Penuh]</option>
-                    <?php endif ?>
-                    <?php if ($jumlahPsikotropika < 6): ?>
-                      <option value="psikotropika">Psikotropika</option>
-                    <?php else: ?>
-                      <option value="psikotropika" disabled>Psikotropika [Data Sudah Penuh]</option>
-                    <?php endif ?>
-                    <?php if ($jumlahZatadiktif < 6): ?>
-                      <option value="zatadiktif">Zat Adiktif</option>
-                    <?php else: ?>
-                      <option value="zatadiktif" disabled>Zat Adiktif [Data Sudah Penuh]</option>
-                    <?php endif ?>
-                  </select>
+                  <input type="text" name="kategori"  class="form-control">
                 </div>
                 <input type="text" name="kategory" value="Sudah" style="display: none">
                   <div class="box box-default" style="padding-top: 10px; margin-top: 10px;" >
@@ -131,6 +115,6 @@ $hasil_semua_data = mysqli_query($koneksidb, $semua_data)or die(mysql_error);
           </div>
 <script>
 function detail(id){
-    window.location.href = 'index.php?p=edit_narkoba&id=' + id; 
+    window.location.href = 'index.php?p=edit_post&id=' + id; 
 }
 </script>

@@ -10,7 +10,11 @@ foreach ($data as $admin) {
 
 ?>
 
-
+<style>
+.profile-user-img{
+  height: 300px;
+}
+</style>
 <div class="row">
 <div class="col-sm-6">
     <div class="box box-warning">
@@ -19,7 +23,7 @@ foreach ($data as $admin) {
       </div>
       <div class="box-body">
         <form role="form" action="edit.php" method="POST" enctype="multipart/form-data">
-          <input type="text" class="form-control" name="informasiwebsite" value="informasi-website">
+          <input type="hidden" class="form-control" name="informasiwebsite" value="informasi-website">
           <div class="form-group">
             <label>Logo Website</label>
             <div class="row">
@@ -73,6 +77,29 @@ foreach ($data as $admin) {
         </form>
       </div>
     </div>
+    <div class="box box-warning">
+  <div class="box-header with-border">
+    <h3 class="box-title">Admin Akun</h3>
+  </div>
+  <div class="box-body">
+    <form role="form" action="edit.php" method="POST">
+      <div class="form-group">
+        <label>Email</label>
+        <input name="email" type="text" class="form-control" value="<?php echo $email ?>">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input name="password" type="password" class="form-control" value="hahaha">
+        <input type="text" name="id" value="<?php echo $id ?>" hidden/>
+      </div>
+      <div class="box box-default" style="padding-top: 10px; margin-top: 10px;" >
+       	<div class="row">
+	   		<div class="col-md-11"><button class="btn btn-success" type="submit">SAVE</button></div>
+       	</div>
+      </div>
+    </form>
+  </div>
+</div>
   </div>
   <div class="col-sm-6">
     <div class="box box-warning">
@@ -139,32 +166,6 @@ foreach ($data as $admin) {
 
 
 
- <div class="box box-warning">
-  <div class="box-header with-border">
-    <h3 class="box-title">Admin Akun</h3>
-  </div>
-  <div class="box-body">
-    <form role="form" action="edit.php" method="POST">
-      <div class="form-group">
-        <label>Email</label>
-        <input name="email" type="text" class="form-control" value="<?php echo $email ?>">
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input name="password" type="password" class="form-control" value="hahaha">
-        <input type="text" name="id" value="<?php echo $id ?>" hidden/>
-      </div>
-      <div class="box box-default" style="padding-top: 10px; margin-top: 10px;" >
-       	<div class="row">
-	   		<div class="col-md-11"><button class="btn btn-success" type="submit">SAVE</button></div>
-       	</div>
-      </div>
-    </form>
-  </div>
-</div>
-
-
-
 <div class="modal fade" id="edit_perusahaan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <form action="edit.php" method="POST" enctype="multipart/form-data">
   <div class="modal-dialog" role="document">
@@ -179,7 +180,7 @@ foreach ($data as $admin) {
         <form>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Gambar:</label>
-            <input name="profil_admin" type="text" class="form-control" id="recipient-name" value="mantap">
+            <input name="profil_admin" type="hidden" class="form-control" id="recipient-name" value="mantap">
             <input name="gambar" type="file" class="form-control" id="recipient-name">
           </div>
           <div class="form-group">

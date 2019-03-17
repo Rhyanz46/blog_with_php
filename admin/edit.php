@@ -119,6 +119,25 @@ if (!empty($_POST['soal'])) {
             header('Location: index.php?p=pengaturan&status=error');
         }
     }
+}elseif(!empty($_POST['deskripsi_gallery'])){
+    $title = $_POST['title'];
+    $deskripsi = $_POST['deskripsi'];
+
+    $sqlTes = "SELECT * FROM gallery_deskripsi;";
+	$result = mysqli_query($koneksidb,$sqlTes);
+    $ada 	= mysqli_num_rows($result);
+    if($ada > 0){
+        $query = "UPDATE gallery_deskripsi SET title='$title', deskripsi='$deskripsi' WHERE no=0;";
+    }else{
+        $query = "INSERT INTO gallery_deskripsi(no, title, deskripsi) VALUES(0, '$title', '$deskripsi');";
+    }
+    $act_query = mysqli_query($koneksidb, $query);
+    if($act_query){
+        header('Location: index.php?p=gallery&status=sukses');
+    }else{
+        header('Location: index.php?p=gallery&status=error');
+    }
+
 }
 
 if(!empty($_POST['post'])){
@@ -209,37 +228,36 @@ if(!empty($_POST['email'])){
 }
 
 
-if($_POST['data'] == "gambar"){
-    $id 		    = $_POST['id'];
-    $gambar			= $_FILES['edit_gambar_narkoba']['name'];
-    $gambar_type    = $_FILES['edit_gambar_narkoba']['type'];
-    $support_imga   = 'image/jpeg';
-    $support_imgb   = 'image/jpg';
-    $support_imgc   = 'image/png';
-	$tmp			= $_FILES['edit_gambar_narkoba']['tmp_name'];
-    $tempat 		= "img/";
-	$upload_kesini 	= $tempat.basename($gambar);
-    
-    if ($gambar_type == $support_imga || $gambar_type == $support_imgb || $gambar_type == $support_imgc) {
-        if(move_uploaded_file($tmp, $upload_kesini)){
-            $sqls = "UPDATE narkoba SET gambar='$gambar' WHERE id='$id';";
-            $data = mysqli_query($koneksidb, $sqls);
-    
-            if ($data) {
-                header('Location: index.php?p=edit_narkoba&id='.$id.'&data=berhasil');
+if(!empty($_POST['data'])){
+    if($_POST['data'] == "gambar"){
+        $id 		    = $_POST['id'];
+        $gambar			= $_FILES['edit_gambar_narkoba']['name'];
+        $gambar_type    = $_FILES['edit_gambar_narkoba']['type'];
+        $support_imga   = 'image/jpeg';
+        $support_imgb   = 'image/jpg';
+        $support_imgc   = 'image/png';
+        $tmp			= $_FILES['edit_gambar_narkoba']['tmp_name'];
+        $upload_kesini 	= $static_folder.basename($gambar);
+        
+        if ($gambar_type == $support_imga || $gambar_type == $support_imgb || $gambar_type == $support_imgc) {
+            if(move_uploaded_file($tmp, $upload_kesini)){
+                $sqls = "UPDATE post_list SET gambar='$gambar' WHERE id='$id';";
+                $data = mysqli_query($koneksidb, $sqls);
+        
+                if ($data) {
+                    header('Location: index.php?p=edit_post&id='.$id.'&data=berhasil');
+                }else{
+                    echo "Gagal Query";
+                }
             }else{
-                echo "Gagal Query";
+                header('Location: index.php?p=edit_post&id='.$id.'&error=koneksi');
             }
-        }else{
-            header('Location: index.php?p=edit_narkoba&id='.$id.'&error=koneksi');
+        } else {
+            header('Location: index.php?p=edit_post&id='.$id.'&error=gambar');
         }
-    } else {
-        header('Location: index.php?p=edit_narkoba&id='.$id.'&error=gambar');
-    }
+
     
-
-    echo 'berhasil';
-
+    }
 }
 
 

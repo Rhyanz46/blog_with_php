@@ -17,7 +17,7 @@ foreach ($data_perusahaan as $data) {
 
 
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-6" style="display:none">
     <div class="box box-primary">
       <div class="box-header with-border bg-blue"><b>Profil Peneliti</b></div>
       <div class="box-body box-profile">
@@ -94,7 +94,7 @@ foreach ($data_perusahaan as $data) {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Send message</button>
+        <button type="submit" class="btn btn-primary">Save</button>
       </div>
     </div>
   </div>

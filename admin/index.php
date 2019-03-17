@@ -110,7 +110,7 @@ foreach ($data_perusahaan as $data) {
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>
         <li>
-          <a href="index.php?p=narkoba">
+          <a href="index.php?p=posts">
             <i class="fa fa-heartbeat"></i> <span>Post</span>
           </a>
         </li>
@@ -126,6 +126,7 @@ foreach ($data_perusahaan as $data) {
             <li><a href="index.php?p=slidder"><i class="fa fa-circle-o"></i>Slider</a></li>
             <li><a href="index.php?p=aturan"><i class="fa fa-circle-o"></i>Aturan Main</a></li>
             <li><a href="index.php?p=gallery"><i class="fa fa-circle-o"></i>Gallery</a></li>
+            <li><a href="index.php?p=instansi"><i class="fa fa-circle-o"></i>Instansi</a></li>
             <li><a href="index.php?p=about"><i class="fa fa-book"></i> <span>About</span></a></li>
           </ul>
         </li>

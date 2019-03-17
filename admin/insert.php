@@ -72,26 +72,22 @@ if (!empty($_POST['kategori'])) { //narkoba
 	$result = mysqli_query($koneksidb,$sqlTes);
 	$ada 	= mysqli_num_rows($result);
 
-	if (move_uploaded_file($tmp, $upload_kesini)) {
-		if ($result){
-	   		if($ada > 0){
-	      		$sql = "UPDATE profil_perusahaan SET singkatan='$singkatan',gambar='$gambar',nama='$nama',alamat='$alamat' WHERE no=0;";
-	    	}else{
-	    		$sql = "INSERT INTO profil_perusahaan(no,singkatan,gambar,nama,alamat) VALUES(0,'$singkatan','$gambar','$nama','$alamat')";
-	    	}
-	  	}else{
-	    	echo "Cek Failed.";
-		}
-
-		$data 	= mysqli_query($koneksidb, $sql);
-
-		if ($data) {
-			header('Location: '. $_SERVER['HTTP_REFERER']);
+	if ($result){
+		if($ada > 0){
+			$sql = "UPDATE profil_perusahaan SET singkatan='$singkatan',nama='$nama',alamat='$alamat' WHERE no=0;";
 		}else{
-			echo "Gagal Query";
+			$sql = "INSERT INTO profil_perusahaan(no,singkatan,nama,alamat) VALUES(0,'$singkatan','$nama','$alamat')";
 		}
-	} else {
-		echo "Gagal Upload";
+	}else{
+		echo "Cek Failed.";
+	}
+
+	$data 	= mysqli_query($koneksidb, $sql);
+
+	if ($data) {
+		header('Location: '. $_SERVER['HTTP_REFERER']);
+	}else{
+		echo "Gagal Query";
 	}
 	
 
@@ -203,6 +199,65 @@ if (!empty($_POST['kategori'])) { //narkoba
     }else{
 		header('Location: index.php?p=slidder&status=error');
     }
+}elseif(!empty($_POST['gallery'])){
+	$file       = $_FILES['img'];
+    $file_gambar= $file['tmp_name'];
+    $gambar     = $file['name'];
+    $extendsi   = explode("/",$file['type'])[0];
+	$real_extendsi  = explode("/",$file['type'])[1];
+
+	if($extendsi == 'image'){
+		$upload_boleh = true;
+		if($real_extendsi == "jpeg"){
+			$real_extendsi = "jpg";
+		}
+		$gambar = make_random($gambar, $real_extendsi);
+		$upload_kesini 	= $static_folder_gallery.basename($gambar);
+        if(move_uploaded_file($file_gambar, $upload_kesini)){
+            $deskripsi = $_POST['deskripsi'];
+			$query = "INSERT INTO gallery(link, deskripsi) VALUES('$gambar', '$deskripsi')";
+			$data = mysqli_query($koneksidb, $query);
+			if($data){
+				header('Location: index.php?p=gallery&status=sukses');
+			}else{
+				header('Location: index.php?p=gallery&status=errorquery');
+			}
+        }else{
+            header('Location: index.php?p=gallery&status=uploadgagal');
+        }
+    }else{
+        header('Location: index.php?p=gallery&status=imgnull');
+	}
+}elseif(!empty($_POST['instansi'])){
+	$file       = $_FILES['img'];
+    $file_gambar= $file['tmp_name'];
+    $gambar     = $file['name'];
+    $extendsi   = explode("/",$file['type'])[0];
+	$real_extendsi  = explode("/",$file['type'])[1];
+
+	if($extendsi == 'image'){
+		$upload_boleh = true;
+		if($real_extendsi == "jpeg"){
+			$real_extendsi = "jpg";
+		}
+		$gambar = make_random($gambar, $real_extendsi);
+		$upload_kesini 	= $static_folder_instansi.basename($gambar);
+        if(move_uploaded_file($file_gambar, $upload_kesini)){
+            $des = $_POST['des'];
+            $nama = $_POST['nama'];
+			$query = "INSERT INTO instansi(nama, link, des) VALUES('$nama','$gambar', '$des')";
+			$data = mysqli_query($koneksidb, $query);
+			if($data){
+				header('Location: index.php?p=instansi&status=sukses');
+			}else{
+				header('Location: index.php?p=instansi&status=errorquery');
+			}
+        }else{
+            header('Location: index.php?p=instansi&status=uploadgagal');
+        }
+    }else{
+        header('Location: index.php?p=instansi&status=imgnull');
+	}
 }else{
 	header('Location: '. $_SERVER['HTTP_REFERER']);
 }

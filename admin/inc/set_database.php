@@ -1,8 +1,13 @@
 <?php 
 // session_start();
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $host = "localhost";
 $user = "root";
-$pw = "a";
+$pw = "Arian.1000";
 $db = "pengenalan_narkoba";
 
 // Konek ke mysql Server 
@@ -74,5 +79,20 @@ foreach($about_data_sql as $data){
   $about_gambar = $data['gambar'];
 }
 
+$sqlTes = "SELECT * FROM gallery_deskripsi;";
+$result = mysqli_query($koneksidb,$sqlTes);
+
+foreach($result as $data){
+  $gallery_title = $data['title'];
+  $gallery_deskripsi = $data['deskripsi'];
+}
+
+$sqlTes = "SELECT * FROM gallery;";
+$gallery_data = mysqli_query($koneksidb,$sqlTes);
+
+$sqlTes = "SELECT * FROM instansi;";
+$instansi_data = mysqli_query($koneksidb,$sqlTes);
+
+// $jmlh_galery 	= mysqli_num_rows($result);
 
 // $post_data_unique = array_unique($post_data);
