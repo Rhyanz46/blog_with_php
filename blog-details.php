@@ -71,16 +71,17 @@ console_log($data);
                     </div>  
                     <div class="main-menu main-menu2">
                         <ul>
-                            <li class="active"><a href="index.php">home</a></li>
+                        <li class="active"><a href="index.php">home</a></li>
+                            <li><a href="menu.html">Tim Kami</a></li>
+                            <li><a href="gallery.php">Gallery</a></li>
                             <li><a href="about.php">about</a></li>
-                            <li><a href="menu.html">menu</a></li>
-                            <li><a href="#">blog</a>
+                            <li><a href="contact-us.html">contact</a></li>
+                            <!-- <li><a href="#">blog</a>
                                 <ul class="sub-menu">
                                     <li><a href="blog-home.html">Blog Home</a></li>
                                     <li><a href="blog-details.html">Blog Details</a></li>
                                 </ul>
-                            </li>
-                            <li><a href="contact-us.html">contact</a></li>
+                            </li> -->
                             <li><a href="elements.html">Elements</a></li>
                         </ul>
                     </div>

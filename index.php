@@ -49,21 +49,31 @@ $data_slidder = mysqli_query($koneksidb, $sql_slidder)or die(mysql_error);
     <link rel="stylesheet" href="assets/css/jquery.datetimepicker.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
+        .warna-header{
+            background: rgb(2,0,36);
+background: linear-gradient(23deg, rgba(2,0,36,1) 0%, rgba(54,39,39,1) 29%, rgba(12,88,61,1) 49%, rgba(90,9,121,1) 67%, rgba(39,102,115,1) 100%);
+        }
         .kategori-post{
             background: #f9f9ff;
             padding: 30px;
             display: grid;
             grid-template-columns: 33% 33% 33%;
             grid-column-gap: 1%;
+            grid-row-gap: 1%;
         }
         .kategori-post > div{
             text-align: center;
             border-bottom: 1px dashed #eeeeee;
             cursor: pointer;
+            margin-bottom: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            transition: all 1s;
         }
         .kategori-post > div:hover {
             color: #7f7b78;
             font-weight: bold;
+            background: #ffb606;
         }
         .anta{
 
@@ -268,8 +278,14 @@ $data_slidder = mysqli_query($koneksidb, $sql_slidder)or die(mysql_error);
         @media (max-width: 1440px) and (min-width: 1200px){
             .header-area {
                 width: 99%;
-                background: #ffb606;
+                background: #ffffff29;
                 border-radius: 10px;
+            }
+            .header-area * a{
+                color: white;
+            }
+            .main-menu ul li a{
+                color: white;
             }
         }
     </style>
@@ -288,7 +304,7 @@ $data_slidder = mysqli_query($koneksidb, $sql_slidder)or die(mysql_error);
                 <div class="col-lg-2">
                     <div class="logo-area text-logonya">
                         <!-- <a href="index.php"><img src="assets/images/logo/logo.png" alt="logo"></a> -->
-                        <a href="index.php">PAK GURU  : </a>
+                        <a href="index.php">GGD Sumba Barat Daya</a>
                     </div>
                 </div>
                 <div class="col-lg-10">
@@ -299,18 +315,18 @@ $data_slidder = mysqli_query($koneksidb, $sql_slidder)or die(mysql_error);
                     </div>  
                     <div class="main-menu">
                         <ul>
-                            <li class="active"><a href="index.php">home</a></li>
+                        <li class="active"><a href="index.php">home</a></li>
+                            <li><a href="team.php">Tim Kami</a></li>
+                            <li><a href="gallery.php">Gallery</a></li>
                             <li><a href="about.php">about</a></li>
-                            <li><a href="menu.html">menu</a></li>
-                            <li><a href="#">blog</a>
+                            <li><a href="contact-us.html">contact</a></li>
+                            <!-- <li><a href="#">blog</a>
                                 <ul class="sub-menu">
                                     <li><a href="blog-home.html">Blog Home</a></li>
                                     <li><a href="blog-details.html">Blog Details</a></li>
                                 </ul>
-                            </li>
-                            <li><a href="contact-us.html">contact</a></li>
+                            </li> -->
                             <li><a href="elements.html">Elements</a></li>
-                            <li><a href="gallery.php">Gallery</a></li>
                         </ul>
                     </div>
                 </div>
@@ -318,7 +334,7 @@ $data_slidder = mysqli_query($koneksidb, $sql_slidder)or die(mysql_error);
         </div>
     </header>
     <!-- Header Area End -->
-    <section class="food-area section-padding">
+    <section class="food-area section-padding warna-header">
     <div class="container">
             <div class="row">
                 <div class="col-lg-8 posts-list">
@@ -428,7 +444,7 @@ $data_slidder = mysqli_query($koneksidb, $sql_slidder)or die(mysql_error);
                     
                 </div>
                 <div class="col-lg-4">
-                    <div class="blog_right_sidebar">
+                    <div class="blog_right_sidebar" style="background: #51728a9e">
                         <aside class="single_sidebar_widget search_widget">
                             <div class="input-group">
                                 <input type="text" class="form-control">
